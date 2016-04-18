@@ -1,0 +1,21 @@
+name: BetterSkyblock
+main: com.compwiz1548.BetterSkyblock.Main
+author: Compwiz1548
+version: 1.0-SNAPSHOT
+commands:
+  bs:
+    description: Main command for managing islands.
+    usage: |
+      Use /help bs subcommand for more information
+      /bs create - Creates an island
+      /bs visit - Teleports you to the given island
+      /bs home - Teleports you back to the spawn of your island
+  bs create:
+    description: Creates an island using your username
+    usage: /bs create
+  bs visit:
+    description: Teleports you to the specified island, if it exists.
+    usage: /bs visit playername
+  bs home:
+    description: Teleports you to the spawn point of your island, if it exists.
+    usage: /bs home
