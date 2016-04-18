@@ -1,13 +1,13 @@
 package com.compwiz1548.BetterSkyblock;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.compwiz1548.BetterSkyblock.Main.*;
+import static com.compwiz1548.BetterSkyblock.Main.getUUIDs;
+import static com.compwiz1548.BetterSkyblock.Main.plugin;
 
 public class CommandBS implements CommandExecutor
 {
@@ -18,8 +18,11 @@ public class CommandBS implements CommandExecutor
             if (commandSender instanceof Player)
             {
                 if (args[0].equalsIgnoreCase("create"))
+                {
                     if (getUUIDs().contains(((Player) commandSender).getUniqueId()))
+                    {
                         commandSender.sendMessage("Island already created! Use /bs home to go to your island!");
+                    }
                     else
                     {
                         boolean op = commandSender.isOp();
@@ -29,6 +32,7 @@ public class CommandBS implements CommandExecutor
                         Bukkit.dispatchCommand(commandSender, "island join " + ((Player) commandSender).getDisplayName().toLowerCase());
                         commandSender.setOp(op);
                     }
+                }
                 else if (args[0].equalsIgnoreCase("visit"))
                 {
                     if (args.length > 1)
