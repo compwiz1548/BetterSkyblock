@@ -29,6 +29,7 @@ public class CommandBS implements CommandExecutor
                         commandSender.setOp(true);
                         Bukkit.dispatchCommand(commandSender, "island create " + ((Player) commandSender).getDisplayName().toLowerCase());
                         plugin.addUUID(((Player) commandSender).getUniqueId());
+                        Bukkit.getLogger().info("Created island for " + ((Player) commandSender).getUniqueId());
                         Bukkit.dispatchCommand(commandSender, "island join " + ((Player) commandSender).getDisplayName().toLowerCase());
                         commandSender.setOp(op);
                     }

@@ -24,7 +24,9 @@ public class Main extends JavaPlugin
     public void onEnable()
     {
         if (plugin == null)
+        {
             plugin = this;
+        }
         server = getServer();
 
         plugin.getCommand("bs").setExecutor(new CommandBS());
@@ -39,10 +41,7 @@ public class Main extends JavaPlugin
     }
 
     @Override
-    public void onDisable()
-    {
-        //Nothing to do
-    }
+    public void onDisable() { /*Nothing to do*/ }
 
     private void createFile()
     {

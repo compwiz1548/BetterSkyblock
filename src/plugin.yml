@@ -13,9 +13,29 @@ commands:
   bs create:
     description: Creates an island using your username
     usage: /bs create
+    permission: betterskyblock.create
   bs visit:
     description: Teleports you to the specified island, if it exists.
     usage: /bs visit playername
+    permission: betterskyblock.visit
   bs home:
     description: Teleports you to the spawn point of your island, if it exists.
     usage: /bs home
+    permission: betterskyblock.home
+permissions:
+  betterskyblock.*:
+    description: Gives access to all BetterSkyblock commands
+    children:
+      betterskyblock.create: true
+      betterskyblock.visit: true
+      betterskyblock.home: true
+    default: true
+  betterskyblock.create:
+    description: Allows you to create an island.
+    default: true
+  betterskyblock.visit:
+    description: Allows you to visit another players island.
+    default: true
+  betterskyblock.home:
+    description: Allows you to return to the spawn of your island.
+    default: true
