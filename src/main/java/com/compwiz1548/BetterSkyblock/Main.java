@@ -103,6 +103,6 @@ public class Main extends JavaPlugin
                 return name.substring(i+1, name.length() - 2);
             }
         }
-        return null;
+        return name;
     }
 }
