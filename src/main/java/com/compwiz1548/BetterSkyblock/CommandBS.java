@@ -35,26 +35,6 @@ public class CommandBS implements CommandExecutor
                         commandSender.setOp(op);
                     }
                 }
-                else if (args[0].equalsIgnoreCase("visit"))
-                {
-                    if (args.length > 1)
-                    {
-                        if (!getUUIDs().contains(((Player) commandSender).getUniqueId()))
-                            commandSender.sendMessage("Island doesn't exist!");
-                        else
-                        {
-                            boolean op = commandSender.isOp();
-                            commandSender.setOp(true);
-                            Bukkit.dispatchCommand(commandSender, "island join " + args[1].toLowerCase());
-                            commandSender.setOp(op);
-                            commandSender.sendMessage("Teleported to " + args[1].toLowerCase());
-                        }
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
                 else if (args[0].equalsIgnoreCase("home"))
                 {
                     if (!getUUIDs().contains(((Player) commandSender).getUniqueId()))
@@ -105,6 +85,6 @@ public class CommandBS implements CommandExecutor
         {
             return false;
         }
-        return true;
+        return false;
     }
 }
