@@ -93,4 +93,16 @@ public class Main extends JavaPlugin
             e.printStackTrace();
         }
     }
+
+    public String cleanName(String name)
+    {
+        for(int i = 0; i < name.length(); i++)
+        {
+            if(name.charAt(i) == ' ')
+            {
+                return name.substring(i+1, name.length() - 2);
+            }
+        }
+        return null;
+    }
 }

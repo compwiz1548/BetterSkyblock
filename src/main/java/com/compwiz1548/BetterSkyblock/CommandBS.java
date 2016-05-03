@@ -25,12 +25,13 @@ public class CommandBS implements CommandExecutor
                     }
                     else
                     {
+                        String name = plugin.cleanName(((Player) commandSender).getDisplayName().toLowerCase());
                         boolean op = commandSender.isOp();
                         commandSender.setOp(true);
-                        Bukkit.dispatchCommand(commandSender, "island create " + ((Player) commandSender).getDisplayName().toLowerCase());
+                        Bukkit.dispatchCommand(commandSender, "island create " + name);
                         plugin.addUUID(((Player) commandSender).getUniqueId());
                         Bukkit.getLogger().info("Created island for " + ((Player) commandSender).getUniqueId());
-                        Bukkit.dispatchCommand(commandSender, "island join " + ((Player) commandSender).getDisplayName().toLowerCase());
+                        Bukkit.dispatchCommand(commandSender, "island join " + name);
                         commandSender.setOp(op);
                     }
                 }
@@ -56,14 +57,16 @@ public class CommandBS implements CommandExecutor
                 }
                 else if (args[0].equalsIgnoreCase("home"))
                 {
-                    if (getUUIDs().indexOf(((Player) commandSender).getUniqueId()) == -1)
+                    if (!getUUIDs().contains(((Player) commandSender).getUniqueId()))
                         commandSender.sendMessage("Island doesn't exist! Use /bs create to create your island!");
                     else
                     {
+                        String name = plugin.cleanName(((Player) commandSender).getDisplayName().toLowerCase());
                         boolean op = commandSender.isOp();
                         commandSender.setOp(true);
-                        Bukkit.dispatchCommand(commandSender, "island join " + ((Player) commandSender).getDisplayName().toLowerCase());
+                        Bukkit.dispatchCommand(commandSender, "island join " + name);
                         commandSender.setOp(op);
+                        commandSender.sendMessage("Teleported to " + name);
                     }
                 }
                 else if (args[0].equalsIgnoreCase("setspawn"))
