@@ -7,32 +7,27 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Main extends JavaPlugin
-{
+public class Main extends JavaPlugin {
 
     public static volatile Main plugin = null;
     public static Server server;
     public static ArrayList<UUID> uuids = new ArrayList<UUID>();
     public File uuidFile;
 
-    public static ArrayList<UUID> getUUIDs()
-    {
+    public static ArrayList<UUID> getUUIDs() {
         return uuids;
     }
 
     @Override
-    public void onEnable()
-    {
-        if (plugin == null)
-        {
+    public void onEnable() {
+        if (plugin == null) {
             plugin = this;
         }
         server = getServer();
 
         plugin.getCommand("bs").setExecutor(new CommandBS());
 
-        if (!getDataFolder().exists())
-        {
+        if (!getDataFolder().exists()) {
             getDataFolder().mkdirs();
         }
         uuidFile = new File(getDataFolder(), "uuids.txt");
@@ -43,64 +38,50 @@ public class Main extends JavaPlugin
     @Override
     public void onDisable() { /*Nothing to do*/ }
 
-    private void createFile()
-    {
-        try
-        {
-            if (!uuidFile.exists())
-            {
+    private void createFile() {
+        try {
+            if (!uuidFile.exists()) {
                 uuidFile.createNewFile();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void loadUUIDs(File uuidFile)
-    {
-        try
-        {
+    private void loadUUIDs(File uuidFile) {
+        try {
             BufferedReader in = new BufferedReader(new FileReader(uuidFile));
 
             String line = in.readLine();
-            while (line != null)
-            {
+            while (line != null) {
                 uuids.add(UUID.fromString(line));
                 line = in.readLine();
             }
             in.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void addUUID(UUID uuid)
-    {
+    public void addUUID(UUID uuid) {
         uuids.add(uuid);
-        try
-        {
+        try {
             BufferedWriter out = new BufferedWriter(new FileWriter(uuidFile, true));
 
             out.append(uuid.toString() + "\n");
             out.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public String cleanName(String name)
-    {
-        for(int i = 0; i < name.length(); i++)
-        {
-            if(name.charAt(i) == ' ')
-            {
-                return name.substring(i+1, name.length() - 2);
+    public String cleanName(String name) {
+        for (int i = 0; i < name.length(); i++) {
+            if (name.charAt(i) == ' ') {
+                return name.substring(i + 1, name.length() - 2);
             }
         }
         return name;
